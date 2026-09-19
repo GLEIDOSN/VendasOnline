@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.11.12210.170 insiders
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendasOnline.API", "VendasOnline.API\VendasOnline.API.csproj", "{066E1164-F7DD-413C-CF43-150BB7BAE259}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{066E1164-F7DD-413C-CF43-150BB7BAE259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{066E1164-F7DD-413C-CF43-150BB7BAE259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{066E1164-F7DD-413C-CF43-150BB7BAE259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{066E1164-F7DD-413C-CF43-150BB7BAE259}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E33A67C-875B-403E-B199-315C19D469F7}
+	EndGlobalSection
+EndGlobal

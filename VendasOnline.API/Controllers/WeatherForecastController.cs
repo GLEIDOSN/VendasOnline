@@ -5,7 +5,7 @@ namespace VendasOnlineAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : ControllerBases
     {
         private static readonly string[] Summaries =
         [

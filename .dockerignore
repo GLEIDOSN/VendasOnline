@@ -1,61 +1,30 @@
-## --- .NET / C# Base Rules ---
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
-out/
-publish/
-*.VisualState.xml
-*.TestRunConfig
-
-## --- Visual Studio 2026 ---
-/.vs/
-*.user
-*.userosscache
-*.sln.docstates
-*.suo
-*.userprefs
-*.dbmdl
-*.mdf
-*.ldf
-
-## --- VS Code / IDEs ---
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
-
-## --- Test Results ---
-[Tt]est[Rr]esult*/
-[Cc]overage/
-*.coverage
-*.coveragexml
-
-## --- Proteção de Segredos e Configurações Locais ---
-appsettings.Development.json
-appsettings.Local.json
-appsettings.Production.json
-appsettings.Staging.json
-*.secrets.json
-
-## --- Entity Framework Core & Bancos Locais ---
-*.db
-*.sqlite
-*.sqlite3
-*.db-shm
-*.db-wal
-
-## --- Docker & Containers ---
-.docker/
-
-## --- Arquivos do Sistema Operacional ---
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
+**/.classpath
+**/.dockerignore
+**/.env
+**/.git
+**/.gitignore
+**/.project
+**/.settings
+**/.toolstarget
+**/.vs
+**/.vscode
+**/*.*proj.user
+**/*.dbmdl
+**/*.jfm
+**/azds.yaml
+**/bin
+**/charts
+**/docker-compose*
+**/Dockerfile*
+**/node_modules
+**/npm-debug.log
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml
+LICENSE
+README.md
+!**/.gitignore
+!.git/HEAD
+!.git/config
+!.git/packed-refs
+!.git/refs/heads/**

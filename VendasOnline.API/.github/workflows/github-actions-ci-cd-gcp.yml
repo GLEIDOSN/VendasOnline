@@ -1,0 +1,33 @@
+name: CI/CD Pipeline - VendasOnline API
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Configura o SDK do .NET 10
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      # 3. Restaura as dependências e pacotes NuGet
+      - name: Restaurar dependências
+        run: dotnet restore
+
+      # 4. Compila a solução sem restaurar novamente (otimização de cache)
+      - name: Compilar a solução (Build)
+        run: dotnet build --no-restore --configuration Release
+
+      # 5. Executa os testes automatizados (se existirem projetos de teste)
+      - name: Executar testes unitários
+        run: dotnet test --no-build --configuration Release --verbosity normal

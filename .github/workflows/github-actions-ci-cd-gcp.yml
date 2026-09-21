@@ -2,9 +2,11 @@ name: CI/CD Pipeline - VendasOnline API
 
 on:
   push:
-    branches: [ "**" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "main", "master" ]
+    branches:
+      - master
 
 jobs:
   build-and-test:

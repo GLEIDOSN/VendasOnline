@@ -4,6 +4,8 @@ using VendasOnline.API.Data;
 using VendasOnline.API.Data.Repositories;
 using VendasOnline.API.Data.Repositories.Interface;
 using VendasOnline.API.Middlewares;
+using VendasOnline.API.Services;
+using VendasOnline.API.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +35,11 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+
+// Registro dos serviços no contêiner de Injeção de Dependência
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 var app = builder.Build();
 

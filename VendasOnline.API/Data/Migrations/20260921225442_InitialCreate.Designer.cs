@@ -12,7 +12,7 @@ using VendasOnline.API.Data;
 namespace VendasOnline.API.Data.Migrations
 {
     [DbContext(typeof(VendasOnlineDbContext))]
-    [Migration("20260920203633_InitialCreate")]
+    [Migration("20260921225442_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

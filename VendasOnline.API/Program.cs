@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using VendasOnline.API.Data;
+using VendasOnline.API.Data.Repositories;
+using VendasOnline.API.Data.Repositories.Interface;
 using VendasOnline.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +27,12 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API REST de integração de dados para parceiros de negócios"
     });
 });
+
+// Registro dos repositórios no contêiner de injeção de dependência
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 
 var app = builder.Build();
 

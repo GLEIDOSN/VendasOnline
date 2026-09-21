@@ -12,7 +12,7 @@ public class Produto
 
     [Required(ErrorMessage = "A descrição do produto é obrigatória.")]
     [StringLength(150)]
-    public string? Descricao { get; set; }
+    public string Descricao { get; set; } = string.Empty;
 
     [Required]
     [Column(TypeName = "decimal(18,2)")]

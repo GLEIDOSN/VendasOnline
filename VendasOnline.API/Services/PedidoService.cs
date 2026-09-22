@@ -82,7 +82,7 @@ public class PedidoService : IPedidoService
             {
                 ProdutoId = produto.Id,
                 Quantidade = itemDto.Quantidade,
-                PrecoUnitario = produto.Preco
+                PrecoUnitario = itemDto.PrecoUnitario
             };
 
             pedido.Itens.Add(itemPedido);
@@ -116,10 +116,19 @@ public class PedidoService : IPedidoService
 
     public async Task RemoverAsync(int id)
     {
-        var pedido = await _pedidoRepository.ObterPorIdAsync(id)
+        var pedido = await _pedidoRepository.ObterDetalhesPedidoAsync(id)
             ?? throw new KeyNotFoundException($"Pedido com ID {id} não foi encontrado.");
 
+        foreach (var item in pedido.Itens)
+        {
+            var produto = await _produtoRepository.ObterPorIdAsync(item.ProdutoId);
+            produto?.QuantidadeEstoque += item.Quantidade;
+
+            item.Produto = null!;
+        }
+
         await _pedidoRepository.RemoverAsync(pedido);
+
         await _pedidoRepository.SalvarAlteracoesAsync();
     }
 

@@ -11,7 +11,7 @@ public class ProdutoRepository : Repository<Produto>, IProdutoRepository
     public async Task<IEnumerable<Produto>> ObterPorNomeAsync(string nome)
     {
         return await _dbSet.AsNoTracking()
-                           .Where(p => EF.Functions.ILike(p.Descricao, $"%{nome}%"))
+                           .Where(p => p.Descricao.ToLower().Contains(nome.ToLower()))
                            .ToListAsync();
     }
 }

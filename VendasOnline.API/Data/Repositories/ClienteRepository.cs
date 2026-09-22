@@ -11,7 +11,7 @@ public class ClienteRepository : Repository<Cliente>, IClienteRepository
     public async Task<IEnumerable<Cliente>> ObterPorNomeAsync(string nome)
     {
         return await _dbSet.AsNoTracking()
-                           .Where(c => EF.Functions.ILike(c.Nome, $"%{nome}%"))
+                           .Where(c => c.Nome.ToLower().Contains(nome.ToLower()))
                            .ToListAsync();
     }
 

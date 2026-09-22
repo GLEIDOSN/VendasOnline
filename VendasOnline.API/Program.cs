@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using System.Diagnostics.CodeAnalysis;
 using VendasOnline.API.Data;
 using VendasOnline.API.Data.Repositories;
 using VendasOnline.API.Data.Repositories.Interface;
@@ -83,3 +84,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+[ExcludeFromCodeCoverage]
+public partial class Program { }

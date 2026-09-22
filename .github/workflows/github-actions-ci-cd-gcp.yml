@@ -4,32 +4,48 @@ on:
   push:
     branches:
       - master
+      - main
   pull_request:
     branches:
       - master
+      - main
 
 jobs:
   build-and-test:
+    name: 🛠️ Build & Test (.NET 10)
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 2. Configura o SDK do .NET 10
+      # 1. Configura o SDK do .NET 10
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
 
-      # 3. Restaura as dependências e pacotes NuGet
+      # 2. Restaura as dependências e pacotes NuGet
       - name: Restaurar dependências
         run: dotnet restore
 
-      # 4. Compila a solução sem restaurar novamente (otimização de cache)
+      # 3. Varredura de vulnerabilidades conhecidas nos pacotes NuGet
+      - name: Scan de Vulnerabilidades NuGet
+        run: dotnet list package --vulnerable --include-transitive
+
+      # 4. Compila a solução em modo Release sem restaurar novamente
       - name: Compilar a solução (Build)
         run: dotnet build --no-restore --configuration Release
 
-      # 5. Executa os testes automatizados (se existirem projetos de teste)
-      - name: Executar testes unitários
-        run: dotnet test --no-build --configuration Release --verbosity normal
+      # 5. Executa os testes automatizados coletando cobertura de código (ignorando Migrations)
+      - name: Executar testes unitários com Cobertura de Código
+        run: >
+          dotnet test 
+          --no-build 
+          --configuration Release 
+          --verbosity normal 
+          /p:CollectCoverage=true 
+          /p:CoverletOutputFormat=cobertura 
+          /p:Threshold=80 
+          /p:ThresholdType=line 
+          /p:Exclude="[*]*Data.Migrations.*"

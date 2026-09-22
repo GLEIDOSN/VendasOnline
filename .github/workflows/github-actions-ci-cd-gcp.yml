@@ -46,4 +46,6 @@ jobs:
           --verbosity normal 
           /p:CollectCoverage=true 
           /p:CoverletOutputFormat=cobertura 
+          /p:Threshold=80 
+          /p:ThresholdType=line 
           /p:Exclude="[*]*Data.Migrations.*"
